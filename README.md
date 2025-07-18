@@ -1,9 +1,3 @@
----
-title: Sreekar Bejjanki
-description: Data Engineer
-show_downloads: true
-theme: jekyll-theme-minimal
----
 
 # 👋 Hi, I'm Sreekar Bejjanki
 
