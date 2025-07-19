@@ -1,140 +1,800 @@
-/* Reset and font setup */
-* {
+/* Core HTML/Body Reset for Browser Consistency */
+html,
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%; /* Ensures body takes full viewport height */
+  overflow-x: hidden; /* Prevents horizontal scroll if any elements overflow */
+  scroll-behavior: smooth; /* Smooth scroll for anchor links */
 }
+
+/* Universal Box-Sizing & Basic Typography Reset */
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+  margin: 0; /* Reset default margins */
+  padding: 0; /* Reset default paddings */
+}
+
+/* Color Variables */
+:root {
+  --primary-color: #007bff; /* A vibrant blue */
+  --secondary-color: #6c757d; /* Muted grey for secondary text */
+  --text-color: #333; /* Dark grey for general text */
+  --background-color: #f8f9fa; /* Light grey for page background */
+  --card-background: #ffffff; /* White for card backgrounds */
+  --border-color: #e0e0e0; /* Light grey for borders */
+  --header-bg: #212529; /* Dark header background */
+  --header-text: #ffffff; /* White text for dark headers */
+  --footer-bg: #343a40; /* Dark footer background */
+  --footer-text: #ffffff; /* White text for dark footers */
+  --hover-color: #0056b3; /* Darker blue on hover */
+  --success-color: #28a745; /* Green for success messages */
+  --error-color: #dc3545; /* Red for error messages */
+  --heading-color: #333; /* Default heading color */
+}
+
+/* Optional: Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #e0e0e0;
+    --background-color: #1a1a1a;
+    --card-background: #2b2b2b;
+    --border-color: #444;
+    --header-bg: #111;
+    --header-text: #ffffff;
+    --footer-bg: #111;
+    --footer-text: #ffffff;
+    --hover-color: #0099ff;
+    --heading-color: #e0e0e0; /* Adjust heading color for dark mode */
+  }
+}
+
+/* Base Body Styles */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f9f9f9;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-/* Navbar */
-.navbar {
-  background: #ffffff;
-  padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0077cc;
-  text-decoration: none;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-.nav-links a:hover {
-  color: #0077cc;
-}
-
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 3rem 0;
-  background-color: #eef6fb;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  color: #0077cc;
-}
-.hero p {
-  font-size: 1.2rem;
-  color: #444;
-}
-
-/* Sections */
-.section {
-  padding: 3rem 1rem;
-}
-.section.light {
-  background-color: #ffffff;
-}
-.section h2 {
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  color: #0077cc;
-}
+/* Reusable Container for Content Width */
 .container {
-  width: 90%;
-  max-width: 900px;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Skills Grid */
+/* Global Link Styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+/* Global Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 15px;
+  color: var(--heading-color); /* Use heading-color variable */
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* --- Main Navigation Bar --- */
+.main-nav {
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Makes navigation stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensures nav is above other content */
+}
+
+.main-nav .container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Pushes logo to left, nav items to right */
+  align-items: center; /* Vertically align items */
+}
+
+/* Logo (Sreekar Bejjanki text + image) Styling */
+.main-nav .logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  display: flex; /* Makes the logo text and image align horizontally */
+  align-items: center; /* Vertically aligns logo image and text */
+  gap: 10px; /* Space between the logo image and text */
+  padding: 5px 0; /* Padding for the entire logo area */
+}
+
+.main-nav .logo:hover {
+  color: var(--hover-color);
+}
+
+/* Logo Image Styling (small circle) */
+.main-nav .logo img {
+  height: 30px; /* Fixed height */
+  width: 30px;  /* Fixed width (same as height for perfect circle) */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures image covers the circle, cropping if needed */
+  vertical-align: middle; /* Ensures alignment with text, though flexbox helps */
+  /* margin-right is handled by 'gap' on parent .logo */
+}
+
+
+/* Navigation Menu List */
+.main-nav .container ul {
+  list-style: none; /* Removes default list bullets */
+  display: flex;    /* Keeps nav items in a row */
+  gap: 40px;        /* Space between nav items */
+  margin-left: auto; /* Pushes the ul to the right if space allows */
+}
+
+.main-nav a {
+  color: var(--text-color);
+  font-weight: 600;
+  padding: 10px 0;
+  position: relative;
+  font-size: 1.1em;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+/* --- Header & Hero Section (Index Page Specific - Image Left, Text Right) --- */
+.header {
+  background-color: var(--header-bg); /* Dark background for the entire header */
+  color: var(--header-text); /* White text color for this section */
+  padding: 60px 0; /* Vertical padding for the header section */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container for Profile Picture and Hero Text (Image Left, Text Right) */
+.header-content {
+  display: flex;             /* IMPORTANT: Makes children (image & text block) arrange horizontally */
+  align-items: center;       /* Vertically centers the items within header-content */
+  justify-content: center;   /* Horizontally centers the entire image+text block on the page */
+  gap: 80px;                 /* Space between the profile picture and the text content. Adjust as needed. */
+  flex-wrap: wrap;           /* Allows items to wrap to a column layout on smaller screens */
+  padding: 80px 20px;        /* Internal padding for the header content area (top/bottom, left/right) */
+  max-width: 1200px;         /* Limits the maximum width of the content for better readability */
+  margin: 0 auto;            /* Centers the header-content block itself on the page */
+}
+
+/* Profile Picture Styling */
+.profile-picture {
+  flex-shrink: 0;            /* Prevents the image from shrinking too much if space is tight */
+}
+
+.profile-picture img {
+  width: 200px;              /* Set desired width for the circular image */
+  height: 200px;             /* Must match width for a perfect circle */
+  border-radius: 50%;        /* Makes the image circular */
+  object-fit: cover;         /* Ensures the image fills the circle neatly, cropping if necessary */
+  border: 5px solid var(--primary-color); /* A subtle border around the image */
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.5); /* A subtle glow effect */
+  animation: fadeIn 1s ease-out; /* Keep existing animation */
+  transform: translateY(-40px);
+}
+
+/* Hero Text Content (Name, Title, Description, Social Links, Button) */
+.hero-text {
+  flex: 1;                   /* Allows this text block to grow and take available space */
+  min-width: 400px;          /* Ensures the text block has a minimum width before wrapping */
+  text-align: left;          /* Aligns all text content within this block to the left */
+}
+
+.hero-text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.2em; /* Adjust main name size */
+  color: var(--header-text); /* Use header-text color for name as it's on dark background */
+  margin-bottom: 5px; /* Less space between name and tagline */
+  text-align: left;
+}
+
+.hero-text .tagline {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4em;
+  color: var(--primary-color); /* Keep primary color for tagline */
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 25px; /* Space below tagline */
+  text-align: left;
+}
+
+.hero-text .intro-description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: var(--header-text);
+  margin-bottom: 30px;
+  max-width: 850px; /* Increased to allow the text to spread out more */
+  text-align: left;
+  animation: fadeIn 1s ease-out 0.4s;
+}
+
+/* Social links styling within hero-text */
+.social-links {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex; /* Make social links flex to align them horizontally */
+  gap: 20px; /* Space between individual social icons */
+  text-align: left; /* Ensure the flex container itself is left-aligned */
+}
+.social-links a {
+  font-size: 2em; /* Size of social icons */
+  color: var(--header-text); /* Color for social icons */
+  transition: color 0.3s ease;
+}
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Ensure the Download Resume button is also left-aligned */
+.hero-text .btn {
+  display: inline-block; /* Important for text-align: left on parent to work */
+  margin-top: 0; /* Adjust as needed */
+}
+
+/* --- General Button Styles --- */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1.1em;
+  text-align: center; /* Ensure button text is centered */
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- General Section Styling --- */
+.main-content {
+  padding-top: 40px; /* Space below sticky nav */
+}
+
+.section {
+  padding: 80px 0;
+  opacity: 0; /* Hidden by default for JS animation */
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 10px;
+  color: var(--heading-color); /* Use heading-color variable */
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 5px;
+  background-color: var(--primary-color);
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 60px auto;
+  width: 70%;
+}
+
+/* --- About Me Section (Index Page) --- */
+.about-content {
+  display: flex;
+  flex-direction: column; /* Stacks paragraphs vertically */
+  gap: 20px;
+  font-size: 1.1em;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left; /* Center the text within the block */
+}
+
+/* --- Work Experience Section --- */
+.experience-item {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.experience-item h3 {
+  color: var(--primary-color);
+  font-size: 1.6em;
+  margin-bottom: 5px;
+}
+
+.experience-item .role {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.experience-item .duration {
+  font-size: 0.95em;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.experience-item ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.experience-item ul li {
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+  color: var(--text-color);
+}
+
+.experience-item ul li::before {
+  content: '\f058'; /* Font Awesome check-circle icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--success-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* --- Projects Grid --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  color: var(--primary-color);
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  margin-bottom: 15px;
+  flex-grow: 1; /* Allows text to expand and align buttons at bottom */
+}
+
+.project-tech {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech span {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.project-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.project-links .btn {
+  padding: 10px 20px;
+  font-size: 0.9em;
+}
+
+/* --- Skills Grid --- */
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
-/* Job Experience */
-.job h3 {
-  margin: 1rem 0 0.5rem;
-  font-size: 1.3rem;
-}
-.job h4 {
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
-}
-.job ul {
-  padding-left: 1.2rem;
-  margin-bottom: 1rem;
-}
-.job ul li {
-  margin-bottom: 0.5rem;
+.skill-category {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Contact */
-#contact ul {
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.skill-category ul {
   list-style: none;
   padding: 0;
+  display: grid; /* Use grid for skill items for better alignment */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
 }
-#contact li {
-  margin-bottom: 0.5rem;
+
+.skill-category li {
+  background-color: var(--background-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
 }
-#contact a {
-  color: #0077cc;
+
+.skill-category li:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* --- Contact Section --- */
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center; /* Center the overall contact content */
+  font-size: 1.1em;
+  margin-top: 30px; /* Adjust spacing */
+  margin-bottom: 40px; /* Adjust spacing */
+}
+
+/* Styling for the contact info list (bullets and icons) */
+.contact-info ul {
+  list-style: none; /* IMPORTANT: Removes the default browser bullet */
+  padding: 0; /* Ensures no default padding pushes the list around */
+  margin: 20px 0 30px 0; /* Adjust top/bottom margin for overall spacing of the list */
+  text-align: left; /* Aligns list text to the left within its container */
+}
+
+.contact-info ul li {
+  position: relative; /* Essential for positioning the custom bullet and icon */
+  padding-left: 30px; /* Creates space for the bullet and icon. Adjust as needed. */
+  margin-bottom: 10px; /* Space between each contact item */
+  font-size: 1.1em; /* Adjust font size */
+  color: var(--text-color);
+  line-height: 1.4; /* Improves readability of text */
+}
+
+.contact-info ul li:last-child {
+  margin-bottom: 0; /* No bottom margin for the very last item in the list */
+}
+
+/* Custom bullet using a pseudo-element */
+.contact-info ul li::before {
+  content: "•"; /* The actual bullet character */
+  color: var(--primary-color); /* Color of your bullet */
+  font-size: 1.2em; /* Size of the bullet */
+  position: absolute; /* Allows precise positioning */
+  left: 5px; /* Adjust this to move the bullet closer/further from the text. Smaller value = closer. */
+  top: 0; /* Aligns the bullet to the top of the line */
+  line-height: inherit; /* Inherits line-height from the parent li for vertical alignment */
+}
+
+/* Styling for the Font Awesome icons inside the list */
+.contact-info ul li i {
+  position: absolute; /* Allows precise positioning of the icon */
+  left: 15px; /* Adjust this to position the icon. It should be between `left` of ::before and `padding-left` of li */
+  top: 0;
+  color: var(--primary-color); /* Icon color */
+  font-size: 1em; /* Icon size */
+  line-height: inherit; /* Inherit line-height for vertical alignment */
+}
+
+/* Styling for the links within the contact list items */
+.contact-info ul li a {
+  color: var(--primary-color);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
-#contact a:hover {
+
+.contact-info ul li a:hover {
+  color: var(--hover-color);
   text-decoration: underline;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #f1f1f1;
-  font-size: 0.9rem;
-  color: #666;
+/* Contact Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--secondary-color);
+}
+
+.contact-form button {
+  align-self: flex-end; /* Aligns the button to the right end of the form */
+  margin-top: 10px;
+}
+
+#form-status {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.status-success {
+  color: var(--success-color);
+}
+
+.status-error {
+  color: var(--error-color);
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+.footer-social-links {
+  margin-top: 15px;
+}
+
+.footer-social-links a {
+  color: var(--footer-text);
+  font-size: 1.8em;
+  margin: 0 12px;
+  transition: color 0.3s ease;
+}
+
+.footer-social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Media Queries for Responsiveness --- */
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+  .hero-text h1 {
+    font-size: 2.8em; /* Slightly smaller name */
   }
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
+  .hero-text .tagline {
+    font-size: 1.4em; /* Slightly smaller tagline */
+  }
+  .section-title {
+    font-size: 2.5em;
+  }
+}
+
+/* For screens smaller than 768px (Tablets and larger phones) */
+@media (max-width: 768px) {
+  /* Header layout change: stack image and text vertically */
+  .header-content {
+    flex-direction: column; /* Stacks image above text */
+    text-align: center;     /* Center everything horizontally when stacked */
+    padding: 40px 15px;     /* Adjust padding for mobile */
+    gap: 30px;              /* Reduce gap when stacked */
+  }
+  .main-content .section:first-of-type {
+    background-color: #000000; /* Choose your desired color here */
+  }
+
+  .profile-picture img {
+    width: 150px; /* Smaller image on mobile */
+    height: 150px;
+    border: 4px solid var(--primary-color); /* Adjust border size if needed */
+  }
+
+  .hero-text {
+    min-width: unset;       /* Remove min-width constraint when stacked */
+    text-align: center;     /* Center text within this block when stacked */
+    margin-top: 0;          /* No extra top margin as gap handles it */
+  }
+
+  /* Ensure all text elements within hero-text are centered when stacked */
+  .hero-text h1,
+  .hero-text .tagline,
+  .hero-text .intro-description,
+  .hero-text .social-links,
+  .hero-text .btn {
+    text-align: center;
+  }
+
+  .hero-text .social-links {
+    justify-content: center; /* Center social icons when stacked */
+    flex-wrap: wrap; /* Allow social icons to wrap if too many */
+  }
+
+  /* General adjustments for smaller screens */
+  .header {
+    padding: 50px 0;
+  }
+  .social-links a {
+    font-size: 1.7em;
+    margin: 0 12px;
+  }
+  .btn {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+  .main-nav .container ul {
+    flex-direction: column; /* Stack navigation items vertically */
+    gap: 15px;
+    padding: 0 15px;
+  }
+  .main-nav a {
+    text-align: center;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .section-title {
+    font-size: 2em;
+  }
+  .experience-item, .project-card, .skill-category, .contact-form {
+    padding: 25px;
+  }
+}
+
+/* For screens smaller than 576px (Extra small devices/Phones) */
+@media (max-width: 576px) {
+  .header {
+    padding: 40px 0;
+  }
+  .profile-picture img {
+    width: 120px;
+    height: 120px;
+    border: 4px solid var(--primary-color);
+  }
+  .hero-text h1 {
+    font-size: 2em;
+  }
+  .hero-text .tagline {
+    font-size: 1em;
+  }
+  .social-links a {
+    font-size: 1.5em;
+    margin: 0 10px;
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .section-title {
+    font-size: 1.8em;
+  }
+  .project-tech span {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+  .experience-item ul li {
+    font-size: 0.9em;
   }
 }

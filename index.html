@@ -1,105 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sreekar Bejjanki | Data Engineer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sreekar Bejjanki - Data Engineer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4C/Zl7bN/zJ+JbJ/D0bK/F7FqU3A/F/vE5H+v2N5z+J9u/N/rN8z/A/xJ2s/R6yP6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <nav class="navbar">
+   <nav class="main-nav">
     <div class="container">
-      <a class="logo" href="#">Sreekar</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <a href="index.html" class="logo">Sreekar Bejjanki</a> <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
+  <main class="main-content">
+    <header class="header">
+      <div class="container header-content">
+        <div class="profile-picture">
+          <img src="assets/sreekar_profile.jpg" alt="Sreekar Bejjanki"> </div>
+        <div class="hero-text">
+          <h1>Sreekar Bejjanki</h1>
+          <p class="tagline">Data Engineer | Building Scalable & Intelligent Data Solutions</p>
+          <p class="intro-description">
+           A results-driven Data Engineer with 2+ years of experience in architecting and implementing robust, scalable data pipelines and ETL workflows. Proficient in PySpark, Apache Spark, and Databricks on cloud platforms like Azure, I specialize in transforming complex, raw data into actionable insights and real-time applications, underpinned by a strong foundation in SQL, Python, and a commitment to data quality and secure processing.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/your-github" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a> <a href="https://linkedin.com/in/sreekarbejjanki" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:sreekarbejjanki@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          <a href="assets/sreekar_bejjanki.pdf" class="btn primary-btn" download>Download Resume</a> </div>
+      </div>
+    </header>
 
-  <header class="hero">
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="container about-content">
+        <p>
+          As a Data Engineer, I thrive on tackling complex data challenges and architecting solutions that drive business value. My journey in the data world has equipped me with a strong foundation in data modeling, ETL processes, and big data technologies. I am always eager to learn new tools and techniques to build more efficient and scalable data platforms.
+        </p>
+        <p>
+          Currently, I am focused on leveraging cloud services like <strong>Azure</strong> and distributed processing frameworks such as <strong>Databricks</strong> to build high-performance data systems. I'm adept at programming in <strong>Python</strong> for data manipulation and automation, and proficient in <strong>SQL Server</strong> for robust database management.
+        </p>
+        <p>
+            I believe in clean code, efficient processes, and continuous learning. My goal is to bridge the gap between raw data and business intelligence, enabling data-driven decision-making.
+        </p>
+        <p>
+          Data is a new <strong>oil.</strong> I Want to create a <strong>refineries.</strong>
+        </p>
+      </div>
+    </section>
+
+
+
+  </main>
+  <footer class="footer">
     <div class="container">
-      <h1>Sreekar Bejjanki</h1>
-      <p>Data Engineer | Python · SQL · Databricks</p>
-    </div>
-  </header>
-
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am a Data Engineer with over 2 years of experience in designing, developing, and automating data workflows using tools like Python, SQL, Airflow, and Databricks. I specialize in transforming raw healthcare data into actionable insights using modern data platforms.</p>
-    </div>
-  </section>
-
-  <section id="skills" class="section light">
-    <div class="container">
-      <h2>Technical Skills</h2>
-      <ul class="skills-grid">
-        <li><strong>Languages:</strong> Python, SQL</li>
-        <li><strong>Big Data Tools:</strong> Apache Spark (PySpark), Delta Lake, Databricks</li>
-        <li><strong>Cloud:</strong> Azure Data Lake, Azure Key Vault</li>
-        <li><strong>Databases:</strong> SQL Server, PostgreSQL</li>
-        <li><strong>API & Integration:</strong> REST APIs, Twilio, FHIR</li>
-        <li><strong>Version Control:</strong> Git, GitHub</li>
-        <li><strong>Others:</strong> JSON, HTML, CSS, Linux, Visual Studio Code</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="experience" class="section">
-    <div class="container">
-      <h2>Work Experience</h2>
-      <div class="job">
-        <h3>Datalysys Software Solutions Pvt. Ltd.</h3>
-        <p><strong>Role:</strong> Data Engineer<br>
-        <strong>Duration:</strong> June 2022 – Present<br>
-        <strong>Location:</strong> Hyderabad (Remote)</p>
-
-        <h4>📌 Patient Messaging Automation Platform</h4>
-        <ul>
-          <li>Developed 5+ Databricks notebooks to automate SMS messaging workflows for healthcare use cases.</li>
-          <li>Utilized PySpark to ingest and transform patient data for message eligibility and scheduling.</li>
-          <li>Integrated Twilio API to send real-time SMS notifications and capture delivery status.</li>
-          <li>Secured credential access using Azure Key Vault and Unity Catalog-based secrets management.</li>
-          <li>Executed SQL Server stored procedures to retrieve dynamic configurations and log message activity.</li>
-        </ul>
-
-        <h4>📌 FHIR Data Lake Integration – Unified Patient 360 Pipeline</h4>
-        <ul>
-          <li>Built Databricks pipelines to ingest and flatten FHIR resources (Patient, Vitals, Appointments).</li>
-          <li>Parsed HL7 FHIR JSON into structured PySpark DataFrames using custom extractors.</li>
-          <li>Consolidated data into Delta tables with Unity Catalog for secure access and governance.</li>
-          <li>Applied CDC logic using Delta MERGE with deduplication on MRN and Encounter ID.</li>
-          <li>Processed 1M+ records with optimized batch loads and schema validation.</li>
-        </ul>
-
-        <h4>📌 Optimized Data Workflows with PySpark</h4>
-        <ul>
-          <li>Designed and optimized distributed ETL pipelines using PySpark, reducing processing time by 50%.</li>
-          <li>Streamlined data loading, transformation, and real-time analytics in Databricks.</li>
-        </ul>
+      <p>&copy; 2025 Sreekar Bejjanki. All rights reserved.</p>
+      <div class="footer-social-links">
+        <a href="https://github.com/your-github" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/sreekarbejjanki" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
-  </section>
-
-  <section id="contact" class="section light">
-    <div class="container">
-      <h2>Contact</h2>
-      <ul>
-        <li>Email: <a href="mailto:sreekarbejjanki@gmail.com">sreekarbejjanki@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/sreekarbejjanki" target="_blank">linkedin.com/in/sreekarbejjanki</a></li>
-        <li>GitHub: <a href="https://github.com/sreekarbejjanki" target="_blank">github.com/sreekarbejjanki</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Sreekar Bejjanki. All rights reserved.</p>
   </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
