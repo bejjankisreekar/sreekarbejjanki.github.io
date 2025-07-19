@@ -798,3 +798,55 @@ hr {
     font-size: 0.9em;
   }
 }
+
+/* --- Achievements & Certifications --- */
+.achievements-certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax as needed */
+  gap: 30px;
+  margin-top: 40px;
+  color: var(--text-color); /* Inherit text color */
+}
+
+/* Reusing skill-category styling for consistency */
+.category-card {
+  background-color: var(--card-background); /* Ensure --card-background is defined in :root or similar */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+.category-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  display: flex; /* For icon alignment */
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+.category-card ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.category-card ul li {
+  margin-bottom: 8px; /* Space between list items */
+  line-height: 1.5;
+}
+
+.category-card ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .achievements-certifications-grid {
+    grid-template-columns: 1fr; /* Stack categories on mobile */
+  }
+}
